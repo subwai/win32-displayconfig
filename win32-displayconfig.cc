@@ -64,7 +64,7 @@ struct Win32RestoreDisplayConfigDevice {
     DISPLAYCONFIG_MODE_INFO targetModeInfo;
 };
 
-DWORD RunDisplayChangeContextLoop(LPVOID lpParam);
+DWORD WINAPI RunDisplayChangeContextLoop(LPVOID lpParam);
 
 class Win32DisplayChangeContext {
    public:
@@ -119,7 +119,7 @@ void HandleDisplayChangeSuccess(Napi::Env env, Napi::Function callback) {
     callback.Call(env.Global(), {env.Null()});
 }
 
-DWORD RunDisplayChangeContextLoop(LPVOID lpParam) {
+DWORD WINAPI RunDisplayChangeContextLoop(LPVOID lpParam) {
     auto context = (Win32DisplayChangeContext *)lpParam;
     MSG msg;
     BOOL getMessageResponse;
